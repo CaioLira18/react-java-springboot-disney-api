@@ -1,5 +1,5 @@
 import React from 'react'
-import tinkerBell from '../images/divider/tinkerBell.png'
+import tinkerBell from '../../public/images/divider/tinkerBell.png'
 
 const Divider = () => {
     return (

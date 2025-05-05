@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import   logo  from '../images/Disney_logo.png'
+import logo  from '../../public/images/Disney_logo.png'
 
 const Header = () => {
   return (
