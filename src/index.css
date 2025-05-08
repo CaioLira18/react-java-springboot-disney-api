@@ -258,11 +258,27 @@ h1 {
 /* Box */
 /* Box Component Styles */
 .container-box {
+  position: relative;
   display: flex;
   justify-content: left;
   width: 100%;
-  margin-top: 100px;
+  background: none; /* removemos a imagem daqui */
+  z-index: 1; /* conteúdo por cima */
+}
 
+.container-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/images/fundos/tinkerbellFundo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: -1; 
 }
 
 .box {
@@ -270,6 +286,7 @@ h1 {
   justify-content: left;
   margin-top: 100px;
   border-radius: 8px;
+  padding: 150px;
 }
 
 
@@ -318,17 +335,6 @@ h1 {
   transform: translateY(-2px);
 }
 
-.box-image{
-  display: flex;
-  justify-content: right;
-}
-
-.box-image img {
-  width: 400px;
-  margin-top: 50px;
-  margin-left: 10px;
-  height: auto;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -342,5 +348,84 @@ h1 {
   
   .title p {
     font-size: 1rem;
+  }
+
+  .box-image img{
+    display: inline;
+  }
+}
+
+/* Box Section*/
+
+.container-box-section {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  width: 100%;
+  background: none; /* removemos a imagem daqui */
+  z-index: 1; /* conteúdo por cima */
+}
+
+.container-box-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/images/fundos/viva.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: -1; 
+}
+
+.box-section {
+  display: flex;
+  justify-content: right;
+  margin: 0; 
+  border-radius: 8px;
+  width: 100%; 
+  max-width: 100%; 
+  padding: 150px; 
+}
+
+.title-section {
+  text-align: right;
+  color: #ffffff;
+  padding: 20px;
+}
+
+.title-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.title-section p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.button-disney-section{
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .box-section {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .box-image-section {
+    justify-content: center;
+    margin-top: 20px;
   }
 }
