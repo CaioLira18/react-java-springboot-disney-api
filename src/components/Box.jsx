@@ -5,8 +5,8 @@ const Box = () => {
     <div className="container-box">
       <div className="box">
         <div className="title">
-          <h1>Welcome to the Disney World</h1>
-          <p>Explore All Disney World</p>
+          <h1>Bem Vindo ao Mundo Magico da Disney</h1>
+          <p>Explore Todos os Universos da Disney</p>
           <div className="button-disney">
             <button className="disney-button">Explore as Franquias</button>
             <button className="disney-button">Entre com uma Conta</button>

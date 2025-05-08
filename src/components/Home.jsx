@@ -12,6 +12,7 @@ const Home = () => {
     
     <div>
       <Box />
+      
       <BoxMundos />
     </div>
   )

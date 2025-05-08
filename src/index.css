@@ -256,14 +256,14 @@ h1 {
 
 
 /* Box */
-/* Box Component Styles */
+
 .container-box {
   position: relative;
   display: flex;
   justify-content: left;
   width: 100%;
-  background: none; /* removemos a imagem daqui */
-  z-index: 1; /* conteúdo por cima */
+  background: none; 
+  z-index: 1; 
 }
 
 .container-box::before {
@@ -273,7 +273,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../public/images/fundos/tinkerbellFundo.png");
+  background-image: url("../public/images/fundos/pixie_dust.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -286,7 +286,7 @@ h1 {
   justify-content: left;
   margin-top: 100px;
   border-radius: 8px;
-  padding: 150px;
+  padding: 200px;
 }
 
 
@@ -362,37 +362,39 @@ h1 {
   display: flex;
   justify-content: right;
   width: 100%;
-  background: none; /* removemos a imagem daqui */
-  z-index: 1; /* conteúdo por cima */
+  z-index: 1;
+  overflow: hidden;
 }
 
-.container-box-section::before {
-  content: "";
+.background-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../public/images/fundos/viva.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: cover;
   opacity: 0.4;
-  z-index: -1; 
+  z-index: -1;
 }
 
 .box-section {
   display: flex;
   justify-content: right;
-  margin: 0; 
+  margin: 0;
   border-radius: 8px;
-  width: 100%; 
-  max-width: 100%; 
-  padding: 150px; 
+  width: 100%;
+  max-width: 100%;
+  padding: 150px;
+  transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+.box-section:hover{
+  padding: 300px;
+}
+
+
 .title-section {
-  text-align: right;
+  text-align: center;
   color: #ffffff;
   padding: 20px;
 }
@@ -410,10 +412,24 @@ h1 {
   font-weight: 500;
 }
 
+.title-section .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-section  img {
+  width: 150px;
+}
+
 .button-disney-section{
   display: flex;
-  justify-content: right;
+  justify-content: center;
   gap: 20px;
+}
+
+.logofilme{
+  margin-top: 15px;
 }
 
 
