@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import background from '../../public/images/fundos/tinkerbellFundo.png';
-import tinkerBellImg  from '../../public/images/personagens/tinkerbell/tinkerbell.png';
-import silvermistImg from '../../public/images/personagens/tinkerbell/silvermist.jpg';
+
 
 const Personagens = () => {
   const { id } = useParams();
