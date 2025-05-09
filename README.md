@@ -1,58 +1,97 @@
-<<<<<<< HEAD
-# react-disney-api
-=======
-# React + TypeScript + Vite
+# Disney Universe API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project provides a comprehensive API to explore the Disney universe, offering information about major franchises and iconic characters. The application uses React for the frontend and Spring Boot for the backend, delivering an interactive experience where users can register accounts, explore famous Disney franchises, and discover details about their favorite characters.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Franchise Catalog**: Browse through major Disney franchises, including Disney Animation, Pixar, Marvel, Star Wars, and Disney Channel (Soon)
+- **Character Profiles**: Explore details about iconic characters, including biographical information, movies, and productions (Soon)
+- **User System**: Create your account to save favorite characters and receive personalized updates (Working)
+- **Responsive Interface**: Fluid experience across mobile and desktop devices (Working)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Frontend
+- React
+- React Router
+- Axios
+- Styled Components
+- React Context API
+
+### Backend
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- MongoDB
+- JWT Authentication
+- JUnit (testing)
+
+## Installation
+
+### Prerequisites
+- Node.js
+- Java 21+
+- Maven
+- MongoDB
+
+### Backend Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/your-username/disney-universe-api.git
+cd disney-universe-api/backend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Configure the database in the `application.properties` file:
+```properties
+spring.application.name=disney
+spring.data.mongodb.uri=mongodb://localhost:27017/disney
 ```
->>>>>>> 0d94dc6 ([feat] - First Commit)
+
+3. Run the backend:
+```bash
+mvn spring-boot:run
+```
+
+The server will be available at `http://localhost:8080`
+
+### Frontend Setup
+
+1. Navigate to the frontend folder:
+```bash
+cd ../frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the frontend:
+```bash
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+## API Structure
+
+### Franchise Endpoints
+- `GET /api/franchises` - List all franchises (Soon)
+- `GET /api/franchises/{id}` - Get details of a specific franchise (Soon)
+- `GET /api/franchises/{id}/characters` - List all characters from a franchise (Soon)
+
+### Character Endpoints
+- `GET /api/characters` - List all characters
+- `GET /api/characters/{id}` - Get details of a specific character
+
+### User Endpoints
+- `POST /api/auth/login` - Authenticate an existing user
+- `GET /api/users/profile` - Get current user profile
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
