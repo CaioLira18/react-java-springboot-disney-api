@@ -445,3 +445,338 @@ h1 {
     margin-top: 20px;
   }
 }
+
+/* Login / Register */
+
+/* Login */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-right: 150px;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-right: 150px;
+}
+
+
+.password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 500px !important; 
+  min-width: 500px;
+  max-width: 90%; 
+  height: 700px; 
+  padding: 40px;
+  color: #333; 
+  box-sizing: border-box; 
+}
+
+.register-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 500px !important; 
+  min-width: 1200px;
+  max-width: 90%; 
+  height: auto; 
+  padding: 60px;
+  color: #333; 
+  box-sizing: border-box; 
+}
+
+.password-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  width: 500px !important; 
+  min-width: 600px;
+  max-width: 90%; 
+  height: auto; 
+  padding: 40px;
+  color: #333; 
+  box-sizing: border-box; 
+}
+
+.form-error-box {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #cc0000;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-field {
+  width: 100%;
+  padding: 12px 10px 12px 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #333;
+  color: #333;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-group {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: left;  
+}
+.form-group label p {
+  display: inline;
+  font-weight: bold;
+}
+
+.login-form-group i {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: #777;
+}
+
+.login-form-group p {
+  color: black;
+  font-size: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field::placeholder {
+  color: #999999;
+}
+
+.form-error {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center;
+}
+
+.remember-forgot input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.forgot-link {
+  color: white;
+  text-decoration: none;
+}
+
+.login-button {
+  background: linear-gradient(135deg, #146e24, #02440e);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #146e24, #02440e);
+}
+
+.register-button {
+  background: linear-gradient(135deg, #146e24, #02440e);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.register-button:hover {
+  background: linear-gradient(135deg, #146e24, #02440e);
+}
+
+.register-text h2{
+  color: white;
+}
+
+
+
+.cabecalho-text {
+  margin-bottom: 15px;
+}
+
+.cabecalho-text-register h1 {
+  font-size: 30px;
+}
+
+.cabecalho-icon {
+  display: flex;
+  justify-content: right;
+}
+
+.cabecalho-icon img {
+  width: 50px;
+}
+
+.cabecalho-text-register p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.cabecalho-img {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-right: 200px;
+  
+}
+
+.cabecalho-img img {
+  width: 500px;
+  
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 8px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 0; /* Ensures columns don't overflow */
+}
+
+.cabecalho-login h1{
+  font-size: 25px;
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cabecalho-login p {
+  font-size: 13px;
+  color: black;
+  text-align: left;
+}
+
+.options-login{
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.options-login p {
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.options-login label input{
+  margin-right: 10px;
+  border-radius: 10px;
+}
+.required{
+  color: red;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="radio"]:checked {
+  background-color: #474747; /* Verde */
+  
+}
+
+.google-button {
+  display: flex;
+  border: 1px solid black;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  align-items: center;
+}
+
+.google {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+.register-link {
+  color: black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.register-link a {
+  color: #000;
+}
