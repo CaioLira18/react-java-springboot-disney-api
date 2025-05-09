@@ -18,7 +18,7 @@ import com.caio.disney.entities.User;
 import com.caio.disney.repository.UserRepository;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/login")
 public class UserResource {
 
     @Autowired

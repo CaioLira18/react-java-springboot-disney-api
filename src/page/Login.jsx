@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import Axios from "axios";
@@ -7,25 +7,63 @@ import Profile from "./Profile";
 
 const API_URL = "http://localhost:8080";
 
-const decodeJwtPayload = (token) => {
-  // Implementar depois
-};
-
 const Login = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Lógica para recuperar usuário do localStorage
+    // Check if user data exists in localStorage
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser && storedUser !== "undefined") {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUser({ ...parsedUser, authenticated: true });
+      } catch (error) {
+        console.error("Erro ao fazer parse do usuário:", error);
+        // Limpar o localStorage se estiver corrompido
+        localStorage.removeItem("user");
+      }
+    }
   }, []);
 
   const handleClickLogin = async (values) => {
-    // Implementar lógica de login
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await Axios.post(`${API_URL}/login`, {
+        email: values.email,
+        password: values.password,
+        role: values.role,
+      });
+
+      // Supondo que o backend retorne um token e dados do usuário
+      const { token, user: userData } = response.data;
+
+      if (token && userData) {
+        // Salvar no localStorage
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        // Atualizar o estado
+        setUser({ ...userData, authenticated: true });
+      } else {
+        throw new Error("Dados de usuário incompletos");
+      }
+    } catch (err) {
+      console.error("Erro de login:", err);
+      setError("Usuário ou senha inválidos");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const validationLogin = yup.object().shape({
-    // Adicionar regras depois
+    email: yup.string().email("Email inválido").required("Campo obrigatório"),
+    password: yup.string().min(6, "Mínimo de 6 caracteres").required("Campo obrigatório"),
+    role: yup.string().required("Campo obrigatório"),
   });
 
   if (user && user.authenticated) {
@@ -45,47 +83,43 @@ const Login = () => {
         {error && <p className="error-message">{error}</p>}
 
         <Formik
-          initialValues={{ email: "", password: "", role: "" }}
+          initialValues={{ email: "", password: "", role: "user" }} 
           validationSchema={validationLogin}
           onSubmit={handleClickLogin}
         >
-          <Form className="login-form">
-            <div className="login-form-group">
-              <p>E-mail *</p>
-              <Field name="email" className="form-field" />
-              <ErrorMessage component="span" name="email" className="form-error" />
-            </div>
+          {({ errors, touched }) => (
+            <Form className="login-form">
+              <div className="login-form-group">
+                <p>E-mail *</p>
+                <Field name="email" className="form-field" />
+                <ErrorMessage component="span" name="email" className="form-error" />
+              </div>
 
-            <div className="login-form-group">
-              <p>Senha *</p>
-              <Field type="password" name="password" className="form-field" />
-              <ErrorMessage component="span" name="password" className="form-error" />
-            </div>
+              <div className="login-form-group">
+                <p>Senha *</p>
+                <Field type="password" name="password" className="form-field" />
+                <ErrorMessage component="span" name="password" className="form-error" />
+              </div>
 
-            <div className="login-form-group">
-              <p>Função *</p>
-              <Field name="role" className="form-field" />
-              <ErrorMessage component="span" name="role" className="form-error" />
-            </div>
+              <div className="options-login">
+                <label>
+                  <input type="checkbox" name="remember" />
+                  Lembre de mim
+                </label>
+                <a href="/EsqueceuSenha">
+                  <p>Esqueceu a senha?</p>
+                </a>
+              </div>
 
-            <div className="options-login">
-              <label>
-                <input type="checkbox" name="remember" />
-                Lembre de mim
-              </label>
-              <a href="/EsqueceuSenha">
-                <p>Esqueceu a senha?</p>
-              </a>
-            </div>
+              <button className="register-button" type="submit" disabled={loading}>
+                {loading ? "Carregando..." : "LOGIN"}
+              </button>
 
-            <button className="register-button" type="submit" disabled={loading}>
-              {loading ? "Carregando..." : "LOGIN"}
-            </button>
-
-            <div className="divider">
-              <span>ou</span>
-            </div>
-          </Form>
+              <div className="divider">
+                <span> ou </span>
+              </div>
+            </Form>
+          )}
         </Formik>
 
         <div className="google">
