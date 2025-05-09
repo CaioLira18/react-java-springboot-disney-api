@@ -10,7 +10,6 @@ import com.caio.disney.repository.PersonagemRepository;
 
 public class PersonagemService {
 
-
     @Autowired
     PersonagemRepository personagemRepository;
 
