@@ -72,7 +72,6 @@ const Register = () => {
         email: values.email,
         password: values.password,
         role: values.role === "0" ? "ADMIN" : "USER",
-        name: values.fullName,
         cpf: values.cpf,
         adminSecret: values.adminSecret,
       };
