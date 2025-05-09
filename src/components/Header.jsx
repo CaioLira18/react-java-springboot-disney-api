@@ -39,14 +39,11 @@ const Header = () => {
                 )}
                   {isAuthenticated && (
                     <>
-                      <li><a href="/Profile">Perfil</a></li>
-                      <li><a href="/Chat">Chat</a></li>
-                      <li><a href="">{userEmail.split('@')[0]}</a></li>
-                      
+                      <li><a href="/profile">Meu Perfil: {userEmail.split('@')[0]}</a></li>
                     </>
                 )}
           </ul>
-</div>
+    </div>
   )
 }
 
