@@ -32,7 +32,7 @@ const Box = () => {
             <button className="disney-button">Explore as Franquias</button>
             {!isAuthenticated && (
               <>
-                <button className="disney-button">Entre com uma Conta</button>
+                <a href="/login"><button className="disney-button">Entre com uma Conta</button></a>
               </>
             )}
           </div>

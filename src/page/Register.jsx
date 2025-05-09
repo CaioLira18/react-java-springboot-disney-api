@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 
 // Validação do formulário
 const validationRegisterFull = yup.object().shape({
-  fullName: yup.string().required('Campo obrigatório'),
+  name: yup.string().required('Campo obrigatório'),
   cpf: yup.string().required('Campo obrigatório'),
   email: yup.string().email('E-mail inválido').required('Campo obrigatório'),
   password: yup.string().required('Campo obrigatório'),
@@ -140,7 +140,7 @@ const Register = () => {
 
         <Formik
           initialValues={{
-            fullName: '',
+            name: '',
             cpf: '',
             email: '',
             password: '',
@@ -154,11 +154,11 @@ const Register = () => {
           {({ values }) => (
            <Form className="registration-form">
             <div className="form-group">
-                <label htmlFor="fullName">
+                <label htmlFor="name">
                 <p>Nome Completo</p> <span className="required">*</span>
                 </label>
-                <Field id="fullName" name="fullName" className="form-field" />
-                <ErrorMessage component="span" name="fullName" className="form-error" />
+                <Field id="name" name="name" className="form-field" />
+                <ErrorMessage component="span" name="name" className="form-error" />
             </div>
 
             <div className="form-group">

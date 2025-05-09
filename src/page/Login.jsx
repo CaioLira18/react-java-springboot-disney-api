@@ -8,7 +8,7 @@ import Profile from "./Profile";
 const API_URL = "http://localhost:8080";
 
 const Login = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -33,18 +33,15 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await Axios.post(`${API_URL}/login`, {
+      const response = await Axios.post("http://localhost:8080/login/auth", {
         email: values.email,
         password: values.password,
-        role: values.role,
       });
 
-      // Supondo que o backend retorne um token e dados do usuário
-      const { token, user: userData } = response.data;
+      const {user: userData } = response.data;
 
-      if (token && userData) {
-        // Salvar no localStorage
-        localStorage.setItem("token", token);
+      if (userData) {
+       
         localStorage.setItem("user", JSON.stringify(userData));
 
         // Atualizar o estado
@@ -63,7 +60,6 @@ const Login = () => {
   const validationLogin = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo obrigatório"),
     password: yup.string().min(6, "Mínimo de 6 caracteres").required("Campo obrigatório"),
-    role: yup.string().required("Campo obrigatório"),
   });
 
   if (user && user.authenticated) {
