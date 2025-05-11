@@ -7,6 +7,7 @@ import Personagens from './page/Personagens'
 import Login from './page/Login'
 import Profile from './page/Profile'
 import Register from './page/Register'
+import Personagem from './page/Personagem'
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/personagens/:franquia/:id" element={<Personagens />} />
+        <Route path="/personagem/:franquia/:id" element={<Personagem />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/personagens" element={<Personagens />} />
         <Route path="*" element={<h1 style={{ marginTop: '100px' }}>404 Page Not Found</h1>} />
       </Routes>
    </div>

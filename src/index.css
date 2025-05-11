@@ -871,3 +871,106 @@ input[type="radio"]:checked {
 .btn-logout:hover {
   background-color: #d32f2f;
 }
+
+/* Personagens Pagina */
+/* Container principal */
+
+.personagens-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  margin-top: 100px;
+  font-family: Arial, sans-serif;
+}
+
+/* Textos principais */
+.texts-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.texts-container h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.texts-container p {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+/* Seção de franquias */
+.franquia-section {
+  margin-bottom: 60px;
+  margin-top: 200px;
+}
+
+/* Cabeçalho da franquia */
+.franquia-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.franquia-logo {
+  height: 80px;
+}
+
+.texts-franquia {
+  display: flex;
+  justify-content: center;
+}
+
+.texts-franquia h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.personagens-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.personagem-card {
+  width: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s;
+  
+}
+
+.personagem-card:hover {
+  transform: scale(1.05);
+}
+
+.personagem-imagem {
+  width: 80%;
+  height: 150px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* Nome do personagem */
+.personagem-nome {
+  font-size: 1.1rem;
+  color: #ffeaea;
+  padding: 10px;
+}
+
+/* Estados de carregamento e erro */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 40px;
+  color: #999;
+}
+
+

@@ -30,8 +30,8 @@ const Header = () => {
             <img src={logo} alt="Logo Disney" />
         </Link>
           <ul>
-              <li><a href="#inicio">Início</a></li>
-              <li><a href="">Personagens</a></li>
+              <li><a href="/">Início</a></li>
+              <li><a href="/personagens">Personagens</a></li>
               {!isAuthenticated && (
                     <>
                       <li><a href="/login">Faça Login</a></li>

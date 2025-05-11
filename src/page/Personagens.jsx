@@ -1,44 +1,103 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import background from '../../public/images/fundos/tinkerbellFundo.png';
-
+import React, { useState, useEffect } from 'react';
 
 const Personagens = () => {
-  const { id } = useParams();
-  const [personagem, setPersonagem] = useState(null);
+  const [todosPersonagens, setTodosPersonagens] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/personagens/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        setPersonagem(data);
+    // Buscar todos os personagens
+    fetch('http://localhost:8080/personagens')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Erro ao buscar personagens');
+        }
+        return res.json();
       })
-      .catch(err => console.error("Erro ao buscar personagem:", err));
-  }, [id]);
+      .then(data => {
+        setTodosPersonagens(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Erro ao buscar personagens:", err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
-  // Enquanto personagem não for carregado, mostrar "carregando"
-  if (!personagem) {
-    return <p>Carregando personagem...</p>;
+  const PersonagemCard = ({ personagem }) => {
+    return (
+      <div className="personagem-card">
+        <a href="/personagem/${personagem.Id`}"><img 
+          src={personagem.image} 
+          alt={personagem.name} 
+          className="personagem-imagem"
+        /></a>
+        <h3 className="personagem-nome">{personagem.name}</h3>
+      </div>
+    );
+  };
+
+  if (loading) {
+    return <div className="loading">Carregando personagens...</div>;
   }
 
+  if (error) {
+    return <div className="error">Erro: {error}</div>;
+  }
+
+  // Filtrar personagens por franquia
+  const personagensTinkerBell = todosPersonagens.filter(
+    personagem => personagem.franquia === "Tinker Bell"
+  );
+  
+  const personagensFrozen = todosPersonagens.filter(
+    personagem => personagem.franquia === "Frozen"
+  );
+
   return (
-    <div>
-      <div className="background-container">
-        <img src={background} alt="fundo" />
+    <div className="personagens-container">
+      <div className="texts-container">
+        <h1>Explore os Personagens Mágicos da Disney</h1>
+        <p>Descubra mais sobre seus personagens favoritos de diferentes franquias Disney</p>
       </div>
-      <div className="container">
-        <div className="box-personagens">
-          <div className="personagens-images">
-            <img src={personagem.image || personagem.descricao} alt={personagem.name} />
-          </div>
-          <div className="informacoes">
-            <h1>{personagem.name}</h1>
-            <p>Franquia: {personagem.franquia}</p>
-            <p>Habilidades: {personagem.habilidades || "Não especificado"}</p>
-            <p>Primeira Aparição: {personagem.primeira_aparicao || "Não especificado"}</p>
-            <p>Descrição: {typeof personagem.descricao === 'string' ? personagem.descricao : "Descrição não disponível"}</p>
-          </div>
+
+      {/* Franquia Tinker Bell */}
+      <div className="franquia-section">
+        <div className="franquia-header">
+          <img src="./public/images/franquias/tinkerbell.png" alt="Franquia Tinker Bell" className="franquia-logo" />
         </div>
+         <div className="texts-franquia">
+            <h2>Personagens de Tinker Bell</h2>
+          </div>
+        
+        {personagensTinkerBell.length === 0 ? (
+          <p>Nenhum personagem encontrado para esta franquia.</p>
+        ) : (
+          <div className="personagens-grid">
+            {personagensTinkerBell.map(personagem => (
+              <PersonagemCard key={personagem.Id} personagem={personagem} />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Franquia Frozen */}
+      <div className="franquia-section">
+        <div className="franquia-header">
+          <img src="./public/images/franquias/frozen.png" alt="Franquia Frozen" className="franquia-logo" />
+          <h2>Personagens de Frozen</h2>
+        </div>
+        
+        {personagensFrozen.length === 0 ? (
+          <p>Nenhum personagem encontrado para esta franquia.</p>
+        ) : (
+          <div className="personagens-grid">
+            {personagensFrozen.map(personagem => (
+              <PersonagemCard key={personagem.Id} personagem={personagem} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
