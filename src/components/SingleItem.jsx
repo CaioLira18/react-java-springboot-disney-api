@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleItem = ({id, name, image, idPath, franquia}) => {
-    // Convert franchise name to lowercase for URL and remove any spaces
+
     const franchiseUrlName = franquia ? franquia.toLowerCase().replace(/\s+/g, '') : '';
     
     return (

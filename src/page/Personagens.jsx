@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Personagens = () => {
   const [todosPersonagens, setTodosPersonagens] = useState([]);
@@ -6,7 +7,6 @@ const Personagens = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Buscar todos os personagens
     fetch('http://localhost:8080/personagens')
       .then(res => {
         if (!res.ok) {
@@ -27,12 +27,14 @@ const Personagens = () => {
 
   const PersonagemCard = ({ personagem }) => {
     return (
-      <div className="personagem-card">
-        <a href="/personagem/${personagem.Id`}"><img 
-          src={personagem.image} 
-          alt={personagem.name} 
-          className="personagem-imagem"
-        /></a>
+      <div className="personagem-card" style={{ cursor: 'pointer' }}>
+        <Link to={`/personagens/${personagem.franquia.toLowerCase()}/${personagem._id}`}>
+          <img 
+            src={personagem.image} 
+            alt={personagem.name} 
+            className="personagem-imagem"
+          />
+        </Link>
         <h3 className="personagem-nome">{personagem.name}</h3>
       </div>
     );
@@ -46,11 +48,10 @@ const Personagens = () => {
     return <div className="error">Erro: {error}</div>;
   }
 
-  // Filtrar personagens por franquia
   const personagensTinkerBell = todosPersonagens.filter(
     personagem => personagem.franquia === "Tinker Bell"
   );
-  
+
   const personagensFrozen = todosPersonagens.filter(
     personagem => personagem.franquia === "Frozen"
   );
@@ -67,16 +68,16 @@ const Personagens = () => {
         <div className="franquia-header">
           <img src="./public/images/franquias/tinkerbell.png" alt="Franquia Tinker Bell" className="franquia-logo" />
         </div>
-         <div className="texts-franquia">
-            <h2>Personagens de Tinker Bell</h2>
-          </div>
-        
+        <div className="texts-franquia">
+          <h2>Personagens de Tinker Bell</h2>
+        </div>
+
         {personagensTinkerBell.length === 0 ? (
           <p>Nenhum personagem encontrado para esta franquia.</p>
         ) : (
           <div className="personagens-grid">
             {personagensTinkerBell.map(personagem => (
-              <PersonagemCard key={personagem.Id} personagem={personagem} />
+              <PersonagemCard key={personagem._id} personagem={personagem} />
             ))}
           </div>
         )}
@@ -88,13 +89,13 @@ const Personagens = () => {
           <img src="./public/images/franquias/frozen.png" alt="Franquia Frozen" className="franquia-logo" />
           <h2>Personagens de Frozen</h2>
         </div>
-        
+
         {personagensFrozen.length === 0 ? (
           <p>Nenhum personagem encontrado para esta franquia.</p>
         ) : (
           <div className="personagens-grid">
             {personagensFrozen.map(personagem => (
-              <PersonagemCard key={personagem.Id} personagem={personagem} />
+              <PersonagemCard key={personagem._id} personagem={personagem} />
             ))}
           </div>
         )}
